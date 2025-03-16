@@ -1,0 +1,161 @@
+/* Animation for sliding in */
+@keyframes slide-out {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(-100%, 0);
+  }
+}
+
+/* Animation for sliding out */
+@keyframes slide-in {
+  from {
+    transform: translate(-100%, 0);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slide-in-box {
+  from {
+    transform: translate(-100%, 0);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+
+
+
+
+
+body {
+    background-color: #ffffff;
+}
+
+
+.navbar {
+    width: 100%;
+    background-color: rgba(76, 175, 80, 0.);
+    overflow: auto;
+    margin: 0;
+    padding: 100;
+    overflow: hidden;
+  }
+  
+.left-nav {
+  float: left;
+  display: block;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+  font-size: x-large;
+  margin: 0;
+  padding: 1%;
+  overflow: hidden;
+}
+
+.left-nav-b {
+  float: left;
+  display: block;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+  font-size: x-large;
+  margin: 0;
+  padding: 1%;
+  overflow: hidden;
+  background-color: #ffffff;
+  border: none;
+  width: auto;
+  height: auto;
+}
+
+.logo{
+  float: center;
+  display: block;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+  font-size: x-large;
+  margin: 0;
+  padding: 1%;
+  overflow: hidden;
+}
+
+.right-nav {
+  float: right;
+  display: block;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+  font-size: x-large;
+  margin: 0;
+  padding: 1%;
+  overflow: hidden;
+}
+
+.search {
+  float: right;
+  height: 100%;
+  max-width: 0; /* Set initial state */
+  opacity: 0; /* Start hidden */
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  margin: 0;
+  padding: 1%;
+  overflow: hidden;
+  border-radius: 100px;
+  border-color: #000000;
+  transition: max-width 0.5s ease, opacity 0.5s ease; /* Animate max-width and opacity */
+  display: none; /* Default hidden */
+}
+
+.search.show {
+  max-width: 15%; /* Final expanded size */
+  opacity: 1; /* Fully visible */
+  display: block; /* Make it visible */
+}
+
+
+.burger {
+  background-color: #000000;
+  width: 20%;
+  height: 100vh;
+  border-radius: 1em;
+  border: 0.1rem solid #000000;
+  display: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.burger a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.burger p {
+  color: #ffffff;
+  font-size: 1.1rem;
+  padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
