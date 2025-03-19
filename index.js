@@ -115,10 +115,8 @@ const bar = document.getElementById('bar');
 
 // Function to hide the loading screen
 function hideLoadingScreen() {
-    bar.style.width = '80vw'
     setTimeout(() => {
-        loadingScreen.style.display = 'none'; // Hide the loading screen after 9 seconds
-        bar.style.width = 0%;
+        loadingScreen.style.display = 'none'; // Hide the loading screen after 10 seconds
     }, 10000);    
     setTimeout(() => {
         loadingScreen.style.opacity = '0%';
@@ -129,9 +127,6 @@ function hideLoadingScreen() {
 // Call the function to initiate the timer
 
 
-function fixes(params) {
-    bar.style.width = '0%'
-}
 
-window.onloadstart = fixes()
+
 hideLoadingScreen();
