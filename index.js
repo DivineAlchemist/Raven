@@ -1,3 +1,5 @@
+
+
 const menu = document.getElementById('button');
 const burger = document.getElementById('burger');
 const body = document.getElementById('body')
@@ -76,3 +78,48 @@ search.addEventListener('click', function () {
         }, 500); // Match CSS transition duration
     }
 });
+
+
+let slides = [
+    {img: 'hal-gatewood-tZc3vjPCk-Q-unsplash.jpg', textTitle: 'title text one', textMain: 'main text one'},
+    {img: 'karsten-winegeart-ZV6VAKLsrpw-unsplash.jpg', textTitle: 'title text two', textMain: 'main text two'},
+    {img: 'becomes-co-4rRBpPkopVw-unsplash.jpg', textTitle: 'title text three', textMain: 'main text three'},
+]
+
+
+const slidesContainer = document.querySelector('.carousel-inner');
+slides.forEach((slide, index) => {
+    let div = document.createElement('div');
+    let img = document.createElement('img');
+    let textOverlay = document.createElement('div');
+
+    img.src = slide.img;
+    div.className = index === 0 ? 'carousel-item active' : 'carousel-item';
+    img.className = 'd-block w-100';
+    textOverlay.className = 'carousel-caption d-none d-md-block'; // Bootstrap class for captions
+
+    textOverlay.innerHTML = `<h5>${slide.textTitle}</h5><p>${slide.textMain}</p>`; // Overlay text
+    div.appendChild(img);
+    div.appendChild(textOverlay);
+    slidesContainer.appendChild(div);
+
+    img.loading = 'lazy';
+    img.alt = `Image representing ${slide.textTitle}`;
+});
+
+
+
+// Reference to the loading screen element
+const loadingScreen = document.getElementById('loadingSC');
+const bar = document.getElementById('bar');
+
+// Function to hide the loading screen
+function hideLoadingScreen() {
+    bar.style.width = '80vw'
+    setTimeout(() => {
+        loadingScreen.style.display = 'none'; // Hide the loading screen after 9 seconds
+    }, 10000); // 10000ms = 10 seconds
+}
+
+// Call the function to initiate the timer
+hideLoadingScreen();
