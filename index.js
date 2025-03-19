@@ -122,4 +122,11 @@ function hideLoadingScreen() {
 }
 
 // Call the function to initiate the timer
+
+
+function fixes(params) {
+    bar.style.width = '0vw'
+}
+
+document.onload = fixes()
 hideLoadingScreen();
