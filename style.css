@@ -1,255 +1,138 @@
-/* Animation for sliding in */
-@media (prefers-reduced-motion: reduce) {
-  * {
-      animation: none !important;
-      transition: none !important;
-  }
+
+
+const menu = document.getElementById('button');
+const burger = document.getElementById('burger');
+const body = document.getElementById('body')
+const search = document.getElementById('search')
+const searchBox = document.getElementById('searchBox')
+
+menu.addEventListener('click', function () {
+
+    // Set initial display state
+    if (!burger.style.display) {
+        burger.style.display = "none";
+    }
+
+    // Toggle display with animations
+    if (burger.style.display === "none") {
+        burger.style.display = "block";
+        burger.style.animation = "slide-in 0.5s forwards";
+    } else {
+        burger.style.animation = "slide-out 0.5s forwards";
+        setTimeout(() => {
+            burger.style.display = "none";
+        }, 500); // Match the animation duration
+    }
+});
+
+
+document.addEventListener('click', function (event) {
+    const isClickInsideMenu = burger.contains(event.target);
+    const isClickOnButton = button.contains(event.target);
+
+    if (!isClickInsideMenu && !isClickOnButton) {
+        burger.style.animation = "slide-out 0.5s forwards";
+        setTimeout(() => {
+            burger.style.display = "none";
+            body.style.backgroundColor = "#ffffff";
+        }, 500); // Match the animation duration
+    }
+});
+
+// search.addEventListener('click', function(){
+//     if (!searchBox.style.display) {
+//         searchBox.style.display = 'none'
+//     }
+//     if (searchBox.style.display === 'none') {
+//         searchBox.style.display = 'block'
+//         searchBox.style.width = '10%'
+//     }
+//     else {
+//         searchBox.style.width = '0%'
+//         setTimeout(() => {
+//             searchBox.style.display = 'none'
+//         }, 500);
+//     }
+// })
+
+
+
+
+// search.addEventListener('click', function () {
+//     searchBox.classList.toggle('show'); // Toggle the "show" class
+// });
+
+
+search.addEventListener('click', function () {
+    if (!searchBox.classList.contains('show')) {
+        // First, set display to block, then animate
+        searchBox.style.display = 'block';
+        setTimeout(() => {
+            searchBox.classList.add('show'); // Add class for animations
+        }, 10); // Delay slightly to ensure CSS transitions trigger
+    } else {
+        // Remove the 'show' class for closing animation
+        searchBox.classList.remove('show');
+        setTimeout(() => {
+            searchBox.style.display = 'none'; // Hide after animation completes
+        }, 500); // Match CSS transition duration
+    }
+});
+
+
+let slides = [
+    {img: 'hal-gatewood-tZc3vjPCk-Q-unsplash.jpg', textTitle: 'title text one', textMain: 'main text one'},
+    {img: 'karsten-winegeart-ZV6VAKLsrpw-unsplash.jpg', textTitle: 'title text two', textMain: 'main text two'},
+    {img: 'becomes-co-4rRBpPkopVw-unsplash.jpg', textTitle: 'title text three', textMain: 'main text three'},
+]
+
+
+const slidesContainer = document.querySelector('.carousel-inner');
+slides.forEach((slide, index) => {
+    let div = document.createElement('div');
+    let img = document.createElement('img');
+    let textOverlay = document.createElement('div');
+
+    img.src = slide.img;
+    div.className = index === 0 ? 'carousel-item active' : 'carousel-item';
+    img.className = 'd-block w-100';
+    textOverlay.className = 'carousel-caption d-none d-md-block'; // Bootstrap class for captions
+
+    textOverlay.innerHTML = `<h5>${slide.textTitle}</h5><p>${slide.textMain}</p>`; // Overlay text
+    div.appendChild(img);
+    div.appendChild(textOverlay);
+    slidesContainer.appendChild(div);
+
+    img.loading = 'lazy';
+    img.alt = `Image representing ${slide.textTitle}`;
+});
+
+
+
+// Reference to the loading screen element
+const loadingScreen = document.getElementById('loadingSC');
+const bar = document.getElementById('bar');
+
+// Function to hide the loading screen
+function hideLoadingScreen() {
+    bar.style.width = '80vw'
+    setTimeout(() => {
+        loadingScreen.style.display = 'none'; // Hide the loading screen after 9 seconds
+        loadingScreen.style.opacity = '0%';
+        bar.style.opacity = '0%';
+    }, 10000);    
+    setTimeout(() => {
+        loadingScreen.style.opacity = '0%';
+        bar.style.opacity = '0%';
+    }, 9000); // 9000ms = 9 seconds
 }
 
+// Call the function to initiate the timer
 
 
-
-
-@keyframes slide-out {
-  from {
-    transform: translate(0, 0);
-  }
-
-  to {
-    transform: translate(-100%, 0);
-  }
+function fixes(params) {
+    bar.style.width = '0vw'
 }
 
-/* Animation for sliding out */
-@keyframes slide-in {
-  from {
-    transform: translate(-100%, 0);
-  }
-
-  to {
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes slide-in-box {
-  from {
-    transform: translate(-100%, 0);
-  }
-
-  to {
-    transform: translate(0, 0);
-  }
-}
-
-
-html {
-  scroll-behavior: smooth;
-}
-
-
-
-
-body {
-    background-color: #ffffff;
-    margin: 0%;
-    padding: 0%;
-}
-
-
-.navbarZ {
-    width: 100%;
-    position: fixed;
-    background-color: rgba(76, 175, 80, 0.);
-    margin-top: 1%;
-    padding: 0%;
-    overflow: hidden;
-    z-index: 1000;
-  }
-  
-.left-nav {
-  float: left;
-  display: block;
-  color: #000000;
-  text-align: center;
-  text-decoration: none;
-  font-size: x-large;
-  margin: 0;
-  padding: 1%;
-  overflow: hidden;
-}
-
-.left-nav-b {
-  float: left;
-  display: block;
-  color: #000000;
-  text-align: center;
-  text-decoration: none;
-  font-size: x-large;
-  margin: 0;
-  padding: 1%;
-  overflow: hidden;
-  background-color: #ffffff;
-  border: none;
-  width: auto;
-  height: auto;
-}
-
-.logo{
-  color: #000000;
-  text-align: center;
-  text-decoration: none;
-  font-size: x-large;
-  margin: 0;
-  padding: 1%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.right-nav {
-  float: right;
-  display: block;
-  color: #000000;
-  text-align: center;
-  text-decoration: none;
-  font-size: x-large;
-  margin: 0;
-  padding: 1%;
-  overflow: hidden;
-}
-
-.search {
-  float: right;
-  height: 100%;
-  max-width: 0; /* Set initial state */
-  opacity: 0; /* Start hidden */
-  background-color: #000000;
-  color: #ffffff;
-  text-align: center;
-  text-decoration: none;
-  font-size: 1rem;
-  margin: 0;
-  padding: 1%;
-  overflow: hidden;
-  border-radius: 100px;
-  border-color: #000000;
-  transition: max-width 0.5s ease, opacity 0.5s ease; /* Animate max-width and opacity */
-  display: none; /* Default hidden */
-}
-
-.search.show {
-  max-width: 15%; /* Final expanded size */
-  opacity: 1; /* Fully visible */
-  display: block; /* Make it visible */
-}
-
-
-.burger {
-  background-color: #000000;
-  width: 20%;
-  height: fit-content;
-  border-top-right-radius: 1em;
-  border-bottom-right-radius: 1em;
-  border: 0.1rem solid #000000;
-  display: none;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-}
-.burger a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1rem;
-}
-.burger p {
-  color: #ffffff;
-  font-size: 1.1rem;
-  padding: 10px;
-}
-
-
-/* .slides div {
-  display: flex;
-  object-fit: cover;
-  flex-direction: column;
-  align-items: center;
-  margin: 0px;
-}
-.slides img {
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-  overscroll-behavior-x: hidden;
-}
-.mainP {
-  z-index: 999;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.titleP {
-  z-index: 999;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
-
-
-
-
-
-.carousel-caption {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #ffffff;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  padding: 10px;
-  border-radius: 5px;
-}
-
-
-.carousel-item {
-  transition: transform 3s ease-in-out; /* Smooth transitions */
-  will-change: transform;
-  backface-visibility: hidden;
-}
-.carousel-inner {
-  transition: transform 3s ease-in-out; /* Customize inner transitions */
-}
-
-.carousel-item {
-    display: none; /* Hide all slides initially */
-}
-.carousel-item.active {
-    display: block; /* Display only the active slide */
-}
-
-
-.loadingSC {
-  background: linear-gradient(45deg, #000, #444); /* Black background */
-  width: 100%; /* Full width of the viewport */
-  height: 100vh; /* Full height of the viewport */
-  z-index: 1001; /* Ensure it's on top of other elements */
-  position: fixed; /* Fixed position to cover the screen */
-  overflow: hidden; /* Prevent scrolling */
-  display: block; /* Initially visible */
-}
-
-.bar {
-  background-color: #ffffff;
-  position: fixed;
-  width: 0vw;
-  height: 1vh;
-  position: center;
-  margin-left: 10vw;
-  margin-top: 49.5vh;
-  border-radius: 100rem;
-  transition: width 9.8s;
-}
-
+document.onload = fixes()
+hideLoadingScreen();
