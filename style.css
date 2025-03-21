@@ -1,3 +1,8 @@
+:root {
+  color-scheme: light;
+}
+
+
 /* Animation for sliding in */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -64,7 +69,13 @@ body {
     padding: 0%;
     overflow: hidden;
     z-index: 1000;
-  }
+}
+.navbarZ i {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding:6px;
+}
+
   
 .left-nav {
   float: left;
@@ -99,12 +110,14 @@ body {
   text-align: center;
   text-decoration: none;
   font-size: x-large;
-  margin: 0;
+  margin-left: 47.2vw;
   padding: 1%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  
 }
 
 
@@ -125,18 +138,19 @@ body {
   height: 100%;
   max-width: 0; /* Set initial state */
   opacity: 0; /* Start hidden */
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
   text-align: center;
   text-decoration: none;
   font-size: 1rem;
-  margin: 0;
-  padding: 1%;
+  margin-top: .65%;
+  padding: .8%;
   overflow: hidden;
-  border-radius: 100px;
-  border-color: #000000;
   transition: max-width 0.5s ease, opacity 0.5s ease; /* Animate max-width and opacity */
   display: none; /* Default hidden */
+  border: 2px solid #000; 
+  border-radius: 10px; 
+  outline: none;
 }
 
 .search.show {
@@ -239,7 +253,7 @@ body {
   z-index: 1001; /* Ensure it's on top of other elements */
   position: fixed; /* Fixed position to cover the screen */
   overflow: hidden; /* Prevent scrolling */
-  display: block; /* Initially visible */
+  display: none; /* Initially visible */
   transition: opacity 1s;
 }
 
@@ -256,3 +270,29 @@ body {
 
 }
 
+.btnvisit {
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  padding: 12px 24px;
+  border:rgb(255, 255, 255);
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.big {
+  background-color: #ffffff;
+  color: #000000; /* Ensure the icons are black */
+  font-size: 30px; /* Adjust icon size */
+  border-radius: 5px;
+}
+
+.big:hover, .big:hover {
+  background-color: #cccccc; /* Slightly darker background on hover */
+}

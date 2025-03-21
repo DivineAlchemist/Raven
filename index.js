@@ -69,6 +69,7 @@ search.addEventListener('click', function () {
         searchBox.style.display = 'block';
         setTimeout(() => {
             searchBox.classList.add('show'); // Add class for animations
+            
         }, 10); // Delay slightly to ensure CSS transitions trigger
     } else {
         // Remove the 'show' class for closing animation
@@ -81,9 +82,9 @@ search.addEventListener('click', function () {
 
 
 let slides = [
-    {img: 'hal-gatewood-tZc3vjPCk-Q-unsplash.jpg', textTitle: 'title text one', textMain: 'main text one'},
-    {img: 'karsten-winegeart-ZV6VAKLsrpw-unsplash.jpg', textTitle: 'title text two', textMain: 'main text two'},
-    {img: 'becomes-co-4rRBpPkopVw-unsplash.jpg', textTitle: 'title text three', textMain: 'main text three'},
+    {img: 'peakpx (2).jpg', textTitle: 'title text one', textMain: 'main text one'},
+    {img: 'peakpx (1).jpg', textTitle: 'title text two', textMain: 'main text two'},
+    {img: 'peakpx.jpg', textTitle: 'title text three', textMain: 'main text three'},
 ]
 
 
@@ -98,9 +99,9 @@ slides.forEach((slide, index) => {
     img.className = 'd-block w-100';
     textOverlay.className = 'carousel-caption d-none d-md-block'; // Bootstrap class for captions
 
-    textOverlay.innerHTML = `<h5>${slide.textTitle}</h5><p>${slide.textMain}</p>`; // Overlay text
+    textOverlay.innerHTML = `<h4>${slide.textTitle}</h4><p>${slide.textMain}</p>`; // Overlay text
     div.appendChild(img);
-    div.appendChild(textOverlay);
+    // div.appendChild(textOverlay);
     slidesContainer.appendChild(div);
 
     img.loading = 'lazy';
@@ -116,12 +117,12 @@ const bar = document.getElementById('bar');
 // Function to hide the loading screen
 function hideLoadingScreen() {
     setTimeout(() => {
-        loadingScreen.style.display = 'none'; // Hide the loading screen after 10 seconds
-    }, 10000);    
+        loadingScreen.style.display = 'none'; // Hide the loading screen after 10.5 seconds
+    }, 10500);    
     setTimeout(() => {
         loadingScreen.style.opacity = '0%';
-        bar.style.opacity = '0%';
-    }, 9000); // 9000ms = 9 seconds
+        // bar.style.opacity = '0%';
+    }, 9000); // 9500ms = 9.5 seconds
 }
 
 // Call the function to initiate the timer
